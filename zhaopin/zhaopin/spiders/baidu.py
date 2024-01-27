@@ -8,7 +8,6 @@ from typing import Iterable
 class BaiduSpider(scrapy.Spider):
     name = "baidu"
     allowed_domains = ["talent.baidu.com"]
-    start_urls = ["https://talent.baidu.com"]
 
     def start_requests(self) -> Iterable[Request]:
         for page in range(148):
