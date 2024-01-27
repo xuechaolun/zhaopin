@@ -9,16 +9,16 @@ from itemadapter import ItemAdapter
 
 class ZhaoPinPipeline:
     def open_spider(self, spider):
+        self.client = pymongo.MongoClient(host='localhost', port=27017)
         if spider.name == 'baidu':
-            self.client = pymongo.MongoClient(host='localhost', port=27017)
             self.conn = self.client['zhaopin']['baidu_work']
+        if spider.name == 'tencent':
+            self.conn = self.client['zhaopin']['tencent']
 
     def process_item(self, item, spider):
-        if spider.name == 'baidu':
-            self.conn.insert_one(item)
-            print('写入成功...')
+        self.conn.insert_one(item)
+        print('写入成功...')
         return item
 
     def close_spider(self, spider):
-        if spider.name == 'baidu':
-            self.client.close()
+        self.client.close()
