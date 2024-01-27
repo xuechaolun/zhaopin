@@ -1,5 +1,6 @@
 import json
-import os, time
+import os
+import time
 from typing import Iterable
 
 import scrapy
