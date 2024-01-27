@@ -14,10 +14,13 @@ class ZhaoPinPipeline:
             self.conn = self.client['zhaopin']['baidu']
         if spider.name == 'tencent':
             self.conn = self.client['zhaopin']['tencent']
+        if spider.name == 'aliyun':
+            self.conn = self.client['zhaopin']['aliyun']
 
     def process_item(self, item, spider):
         self.conn.insert_one(item)
         print('写入成功...')
+        # print(item)
         return item
 
     def close_spider(self, spider):
