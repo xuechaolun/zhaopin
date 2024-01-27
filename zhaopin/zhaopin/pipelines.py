@@ -11,7 +11,7 @@ class ZhaoPinPipeline:
     def open_spider(self, spider):
         self.client = pymongo.MongoClient(host='localhost', port=27017)
         if spider.name == 'baidu':
-            self.conn = self.client['zhaopin']['baidu_work']
+            self.conn = self.client['zhaopin']['baidu']
         if spider.name == 'tencent':
             self.conn = self.client['zhaopin']['tencent']
 
