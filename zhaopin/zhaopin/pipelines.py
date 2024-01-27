@@ -16,6 +16,8 @@ class ZhaoPinPipeline:
             self.conn = self.client['zhaopin']['tencent']
         if spider.name == 'aliyun':
             self.conn = self.client['zhaopin']['aliyun']
+        if spider.name == 'taotian':
+            self.conn = self.client['zhaopin']['taotian']
 
     def process_item(self, item, spider):
         self.conn.insert_one(item)
